@@ -1,0 +1,64 @@
+{% extends "inicio/base.html" %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        {% if subreddits %}
+            <div class="row my-5 mx-5">
+                <div class="col-lg-12">
+                    <table class="table table-responsive table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">subreddit</th>
+                                <th scope="col">title</th>
+                                <th scope="col">selftext</th>
+                                <th scope="col">upvote_ratio</th>
+                                <th scope="col">ups</th>
+                                <th scope="col">downs</th>
+                                <th scope="col">score</th>
+                                <th scope="col">sent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in subreddits %}
+                            <tr>
+                                <td>{{i.subreddit}}</td>
+                                <td>{{i.title}}</td>
+                                <td>{{i.selftext}}</td>
+                                <td>{{i.upvote_ratio}}</td>
+                                <td>{{i.ups}}</td>
+                                <td>{{i.downs}}</td>
+                                <td>{{i.score}}</td>
+                                <td>{{i.sent}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+        
+        <script language="JavaScript">
+            function pregunta(){
+                if (confirm('¿Estas seguro de subir este arhivo?')){
+                   document.subirReddits.submit()
+                }
+            }
+        </script>
+
+        <form name='subirReddits' method="post" action="{% url 'googledrive' %}">
+            {% csrf_token %}
+            <input type="hidden" name="archivo_csv" value="{{ archivo_csv }}">
+            <input type="hidden" name="nombre_archivo" value="Tabla de Subreddits.csv">
+            <input type="hidden" name="carpeta_id" value="{{ carpeta_id }}">
+            <button class="btn-lg btn-success mx-5" type="submit" onclick="pregunta()" value="Enviar"> Subir </button>
+        </form>
+
+        <form class="d-flex w-25 my-4 mx-4" role="Submit" action="{% url 'subreddit' %}">
+                <button class="btn-lg btn-success" type="submit">Volver a subreddits</button>
+        </form>
+        
+    </div>
+    <div class="container" style="height: 25px"></div>
+
+{% endblock %}

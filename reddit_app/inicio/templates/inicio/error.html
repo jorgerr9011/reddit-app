@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Error 404 - Página no encontrada</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      margin-top: 100px;
+    }
+
+    .error-template {
+      padding: 40px 15px;
+      text-align: center;
+    }
+
+    .error-actions {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="error-template">
+          <h1>¡Oops!</h1>
+          <h2>Error 404 - Página no encontrada</h2>
+          {% if  error_message %}
+          <div class="error-details">
+            {{ error_message }}
+          </div>
+          {% else %}
+          <div class="error-details">
+            Lo sentimos, la página que estás buscando no se encuentra disponible.
+          </div>
+          {% endif %}
+          <div class="error-actions">
+            <a href="{% url 'index' %}" class="btn btn-primary btn-lg">Volver a la página de inicio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{% extends "inicio/base.html" %}
+
+{% block content %}
+
+<!-- Posición anterior: style="margin: 50px; padding: 50px;" -->
+<!-- Boton de search para buscar cada subreddit -->
+<div class="container-fluid" style="height: 50px">
+    <form class="d-flex w-25 my-4 mx-4" role="Search" action="{% url 'subreddit' %}">
+        <input class="form-control" type="search" name="subreddit" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+
+{% load static %}
+
+<!--
+{% include 'subreddit/messages.html' %}
+-->
+
+<!-- Tabla de contenidos de cada subreddit -->
+{% if lista %}
+    <div class="row mx-5">
+        <div class="col-md-12 w-50">
+            <table class="table table-responsive table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">subreddit</th>
+                        <th scope="col">title</th>
+                        <th scope="col">selftext</th>
+                        <th scope="col">upvote_ratio</th>
+                        <th scope="col">ups</th>
+                        <th scope="col">downs</th>
+                        <th scope="col">score</th>
+                        <th scope="col">sent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in lista %}
+                    <tr>
+                        <td>{{i.subreddit}}</td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.selftext}}</td>
+                        <td>{{i.upvote_ratio}}</td>
+                        <td>{{i.ups}}</td>
+                        <td>{{i.downs}}</td>
+                        <td>{{i.score}}</td>
+                        <td>{{i.sent}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Paginador para ir navegando entre los subreddits en la base de datos -->
+    <div>
+        {% include 'subreddit/paginator.html' %}
+    </div>
+
+    <!-- Botón para eliminar el total de subreddits de la base de datos -->
+    <form class="d-flex w-25 my-4 mx-4" role="Delete" action="{% url 'eliminar_subr' %}">
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+
+    <!-- Botón para subir datos sobre subreddits buscados a drive -->
+    <form class="d-flex w-25 my-4 mx-4" role="Submit" action="{% url 'subir_subr' %}">
+        <button class="btn btn-danger" type="submit">Subir a Drive</button>
+    </form>
+
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-sm-12 col-md6 col-lg-6 col-xl-6 mx-auto">
+                <div id="chart" class="chart" style="width: 100%; min-height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script en js para la creación de la gráfica -->
+    <script>
+        const getOptionChart = async () => {
+            try {
+                const response = await fetch("http://localhost:8001/subreddit/chart/");
+                return await response.json();
+            } catch (ex) {
+                alert(ex);
+            }
+        };
+
+        const initChart = async () => {
+            const myChart = echarts.init(document.getElementById("chart"));
+
+            myChart.setOption(await getOptionChart());
+
+            myChart.resize();
+        };
+
+        window.addEventListener("load", async () => {
+            await initChart();
+        });
+    </script>
+    
+    <!--script src="{% static 'reviews/main.js' %}"></script-->
+
+{% endif %}
+
+{% endblock %}

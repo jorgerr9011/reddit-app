@@ -1,0 +1,52 @@
+{% extends "inicio/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+    #map {
+        height: 850px;
+        width: 100%;
+    }
+    
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    p {
+        color: #555;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    h2, h3 {
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container">
+    <ul>
+        <h1>{{ post_title }}</h1>
+        <p>{{ post_body }}</p>
+        {% if average %}
+            <h2>Sentimiento promedio: {{ average}}</h2>
+            <h3>Etiqueta: {{ sentiment }}</h3>
+        {% else %}
+            <p>No hay comentarios disponibles</p>
+        {% endif %}
+    </ul>
+</div>
+
+{% endblock %}

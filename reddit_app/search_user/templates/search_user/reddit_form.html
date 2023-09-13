@@ -1,0 +1,24 @@
+{% extends "inicio/base.html" %}
+
+{% block content %}
+  <div class="w-20 my-4 mx-4">
+    <h1>Búsqueda de usuario de Reddit</h1>
+    <form method="get" action="{% url 'reddit_info' %}">
+      <div class="mb-4 my-3 mx-1 d-flex" style="width: 31%">
+        <label for="nickname" class="form-label"><h4>Nickname:</h4></label>
+        <input type="text" class="form-control" id="nickname" name="nickname" required>
+      </div>
+      <button type="submit" class="btn btn-primary"><h5>Obtener información</h5></button>
+    </form>
+    
+    <!-- Botón para ver la tabla de usuarios -->
+    <a href="{% url 'tabla_usuarios' %}" class="btn btn-secondary float-right"><h5>Ver tabla de usuarios</h5></a>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+  

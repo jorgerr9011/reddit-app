@@ -1,0 +1,11 @@
+django==4
+django-crispy-forms
+crispy-bootstrap4
+oauth2
+textblob
+oauthlib
+pydrive2
+pandas
+Pillow
+psycopg2
+praw

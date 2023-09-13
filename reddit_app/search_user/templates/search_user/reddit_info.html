@@ -1,0 +1,69 @@
+{% extends "inicio/base.html" %}
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Información de Reddit para el usuario: {{ nickname }}</h1>
+      
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="card mb-3">
+              <div class="card-body bg-primary text-white">
+                <h5 class="card-title">Karma por links</h5>
+                <p class="card-text">{{ karma_links }}</p>
+              </div>
+            </div>
+      
+            <div class="card mb-3">
+              <div class="card-body bg-info text-white">
+                <h5 class="card-title">Karma por comentarios</h5>
+                <p class="card-text">{{ karma_comentarios }}</p>
+              </div>
+            </div>
+      
+            <div class="card mb-3">
+              <div class="card-body bg-success text-white">
+                <h5 class="card-title">Karma por logros</h5>
+                <p class="card-text">{{ karma_logros }}</p>
+              </div>
+            </div>
+      
+            <div class="card mb-3">
+              <div class="card-body bg-warning text-dark">
+                <h5 class="card-title">Karma total</h5>
+                <p class="card-text">{{ karma }}</p>
+              </div>
+            </div>
+      
+            <div class="card mb-3">
+              <div class="card-body bg-secondary text-white">
+                <h5 class="card-title">Subreddit principal del usuario</h5>
+                <p class="card-text">{{ subreddit_principal }}</p>
+              </div>
+            </div>
+      
+            <div class="card mb-3">
+              <div class="card-body bg-light">
+                <h5 class="card-title">Cake day</h5>
+                <p class="card-text">{{ fecha_creacion }}</p>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-lg-4">
+            <img src="{{ icono_snoovatar }}" alt="Este usuario no tiene un snoovatar configurado" class="float-end img-fluid mt-5">
+          </div>
+        </div>
+        
+        <a href="{% url 'tabla_usuarios' %}" class="btn btn-primary">Ver tabla de usuarios</a>
+    
+    </div>
+
+</body>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,37 @@
+{% extends "inicio/base.html" %}
+
+{% block content %}
+
+<style>
+    .table-background {
+        background-color: #f5f5f5; /* Cambia el color de fondo según tus preferencias */
+        color: #000000;
+      }
+    </style>
+<body>
+    <div class="container">
+        <h1>Tabla a Subir</h1>
+
+        {% if html_table %}
+        <div class="table-container table-background">
+            {{ html_table|safe }}
+        </div>
+        {% else %}
+        <p>No hay datos disponibles en la tabla.</p>
+        {% endif %}
+
+        <!-- Formulario para subir a Google Drive -->
+        <form method="post" action="{% url 'googledrive' %}">
+            {% csrf_token %}
+            <input type="hidden" name="archivo_csv" value="{{ archivo_csv }}">
+            <input type="hidden" name="nombre_archivo" value="Tabla de Usuarios.csv">
+            <input type="hidden" name="carpeta_id" value="{{ carpeta_id }}">
+            <button type="submit" class="btn btn-primary">Confirmar</button>
+        </form>
+
+        <!-- Botón para volver a la búsqueda de usuario -->
+        <a href="{% url 'reddit_form' %}" class="btn btn-secondary">Volver a la búsqueda de usuario</a>
+    </div>
+</body>
+
+{% endblock %}

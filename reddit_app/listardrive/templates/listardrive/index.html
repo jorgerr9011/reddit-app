@@ -1,0 +1,50 @@
+{% extends 'inicio/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% if dat %}
+        <div class="row my-5">
+            <div class="col-sm-12 w-10">
+                <table class="table table-responsive table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NombreArchivo</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Extensión</th>
+                            <th scope="col">FechaCreación</th>
+                            <th scope="col">Tamaño(bytes)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for j in dat %}
+                        <tr>
+                            <td>{{ j.index }}</td>
+                            <td>{{ j.titulo }}</td>
+                            <td>{{ j.nId }}</td>
+                            <td>{{ j.fileExtension }}</td>
+                            <td>{{ j.createdDate }}</td>
+                            <td>{{ j.fileSize }}</td>
+                            <td>
+                                <form method="post" action="{% url 'eliminar_archivo' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="nId" value="{{ j.nId }}">
+                                    <button type="submit" class="btn btn-outline-danger">borrar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <!-- Botón para eliminar el total de subreddits de la base de datos -->
+                <form class="d-flex w-25 my-4 mx-4" role="Delete" action="{% url 'eliminar_drive' %}">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

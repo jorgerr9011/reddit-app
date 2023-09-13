@@ -1,0 +1,113 @@
+{% extends "reviews/base.html" %} {%block content%} {% if p %}
+<div class="col-md-7">
+	<a href="{% url 'detail' p.id %}">
+		  <img class="img-fluid rounded mb-3 mb-md-0" src="{{p.image.url}}" alt="">
+		</a>
+</div>
+<div class="col-md-5">
+	<h3>{{ p.name }}</h3>
+	<p>Opiniones:</p>
+</div>
+
+{% if reviews_list %}
+<ul>
+	{% for r in reviews_list %}
+	<div class="row">
+		<li> {{r.title }} : {{ r.text }}
+	</div>
+	<hr> {% endfor %}
+</ul>
+{% else %} No hay opiniones para este producto {% endif %} {% else %} Producto no encontrado {% endif %} 
+
+
+{% if request.user.is_authenticated %}
+
+<div class="container">
+	<!-- Trigger the modal with a button -->
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Nueva opinión</button>
+  
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+	  <div class="modal-dialog">
+	  
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-body">
+			<p>{% load crispy_forms_tags %}
+						  {% crispy new_review_form new_review_form.helper %}
+					  </p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		  </div>
+		</div>
+		
+	  </div>
+	</div>
+	
+  </div>
+  <BR>
+
+	{%else%}
+	<div class="container">
+			{{loginError}}
+			<BR>
+			<!-- Trigger the modal with a button -->
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login</button>
+		
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+										
+														</button>
+		
+		
+						</div>
+						<div class="modal-body">
+							<div role="tabpanel">
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="active"><a href="#loginTab" aria-controls="loginTab" role="tab" data-toggle="tab">Login</a>
+		
+									</li>
+									<li role="presentation"><a href="#signupTab" aria-controls="signupTab" role="tab" data-toggle="tab">Registrarse</a>
+		
+									</li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content">
+									<div role="tabpanel" class="tab-pane active" id="loginTab">
+										<p>{% load crispy_forms_tags %} {% crispy login_form login_form.helper %}
+										</p>
+									</div>
+									<div role="tabpanel" class="tab-pane" id="signupTab">
+										<p>{% load crispy_forms_tags %} {% crispy signup_form signup_form.helper %}
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<BR> 
+	{%endif%}
+
+	<BR>
+		Últimos tweets sobre este producto:
+		{% if tweets.statuses %}
+		<ul>
+		{% for r in tweets.statuses %}
+		<li> {{ r.text }}
+		{% endfor %}
+		</ul>
+		{% else %}
+		No hay tweets para este producto
+		{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+subreddit,title,selftext,upvote_ratio,ups,downs,score,sent
+pythontips,How to Reverse Engineer DeepL’s Private API for Sentence Splitting,"DeepL has gained recognition for its advanced machine translation engine. However, while exploring the inner workings of their website using the Inspector tool in the Firefox browser, I came across another hidden gem: the engine’s capability to accurately divide texts into sentences, regardless of their length or the language being used. [Here's how](https://devtonic.net/how-to-reverse-engineer-deepls-private-api-for-sentence-splitting/) to use DeepL’s Natural Language Processing (NLP) engine to split into sentences text of any length – for free, no API keys required. 
+
+Please let me know what you think.
+
+https://devtonic.net/how-to-reverse-engineer-deepls-private-api-for-sentence-splitting/",0.67,1,0,1,subjectivity
+pythontips,Hardware for my POS System,"Hi, Im a newbie and I just recently built a POS System made from python, tkinter, and with mysql as the database. Im wondering what would be the system requirement for my program and I want to run it on a mini all-in-one pc like a raspberry pi but the brand is ICHICO. As a student, Im afraid to order it and find out its uncapable of running the program. Below are the links for the images of the GUI and the specs of the hardware Im planning on putting my POS system.
+
+Also if I bought that aio, should I remain with windows or install a linux with it? Python no doubt would work but Im worried if I can run it with the sql at the same time. Please guide me, thank you!
+
+POS:
+https://ibb.co/b2ZvDH6
+https://ibb.co/KDHV7Fh
+https://ibb.co/WprSQKB
+
+ICHICO:
+https://ibb.co/sgzhyMV
+https://ibb.co/7zfXZ5d
+https://shp.ee/cz72jdr",0.67,1,0,1,subjectivity
+pythontips,Microservices?,"Hi I'm interested in work with microservices. Currently I'm learning about Celery. My doubt is what do you recommend me use for this purpose:
+
+Celery tasks or celery Producer/Consumer to communicate the services?
+
+I mean what would I use:
+
+celery_app.Producer().publish(
+  body,
+)
+
+Or:
+
+@app.post(""/item"")                                                          async def create_item(item: Item):
+
+..  celery_app.AsyncResult(tasks.store_in_db.delay(item))
+
+..  celery_app.AsyncResult(tasks.notificate.delay())
+
+..  return {""message"": ""item was sent to store event""}",0.5,0,0,0,subjectivity
+pythontips,High-level Path Operations Using pathlib Module In Python,"The `pathlib` module is a part of Python's standard library and allows us to interact with filesystem paths and work with files using various methods and properties on the Path object.
+
+## Getting Started With pathlib
+
+The most frequently used class of the `pathlib` module is Path. It is better to kick off with the `Path`  
+ class if we are using this module for the first time or not sure which class to use for our task.
+
+    # Importing Path class from pathlib
+    from pathlib import Path
+    
+    # Instantiating the Path
+    path = Path(__file__)
+    print(path)
+
+In the above example, first, we imported the `Path` class from the `pathlib` module and then instantiated the Path with `__file__`.
+
+This returns the absolute path to the current file, `main.py`, on which we are working.
+
+    D:\SACHIN\Pycharm\pathlib_module\main.py 
+
+The `Path` class instantiates the file's concrete path for the operating system on which the user is working. Because we're using Windows, we'll get the following output if we print the type of `path`.
+
+    print(type(path))  
+    ---------- 
+    &lt;class 'pathlib.WindowsPath'&gt; 
+
+Before we get into the methods and properties of `Path`, it's important to understand that the `Path` classes are divided into ***pure paths*** and ***concrete paths***.
+
+**Here is the full guide to manipulating path using the pathlib module👇👇**
+
+[High-level Path Operations Using pathlib Module In Python](https://geekpython.in/python-pathlib-module)",0.6,1,0,1,subjectivity
+pythontips,Know How to Create and Visualize a Decision Tree with Python,"Creating and visualizing decision trees can be simple if one possesses the knowledge of the basics. Understand how to do it with the help of Python.  
+  
+[https://www.dasca.org/world-of-big-data/article/know-how-to-create-and-visualize-a-decision-tree-with-python](https://www.dasca.org/world-of-big-data/article/know-how-to-create-and-visualize-a-decision-tree-with-python) ",1.0,5,0,5,subjectivity
+JavaScriptTips,"""import"" Issues","Hi, I'm new at js and I can't find any solutions for this issue:  
+
+
+I want to import files that I created from another file. I use: 
+
+""&lt;script type=""module"" src=""./js/resizeManager.js""&gt;&lt;/script&gt;"" 
+
+and import like this:
+
+import \* as ResizeManager from './js/resizeManager.js';
+
+but I get this error: Uncaught SyntaxError: Cannot use import statement outside a module (at game.js:1:1)
+
+If anyone can help, I would be appreciated.
+
+&amp;#x200B;",1.0,1,0,1,objectivity
+JavaScriptTips,3 Ways To Implement Infinite Scroll,,1.0,1,0,1,objectivity
+JavaScriptTips,Advanced Vanilla JavaScript Tip: Functional Programming with Higher-Order Functions,,1.0,1,0,1,objectivity
+JavaScriptTips,"HTML, CSS and JavaScript loading animation step by step",,1.0,1,0,1,objectivity
+JavaScriptTips,"HTML, CSS and JavaScript loading animation step by step",,1.0,1,0,1,objectivity

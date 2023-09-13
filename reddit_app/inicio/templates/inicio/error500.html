@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error 500 - Internal Server Error</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            padding: 50px;
+        }
+        
+        .error-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+        }
+        
+        .error-code {
+            font-size: 80px;
+            color: #dc3545;
+        }
+        
+        .error-message {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-code">Error 500</h1>
+        <p class="error-message">Internal Server Error</p>
+        <p>Lo sentimos, se ha producido un error interno en el servidor.</p>
+        <a class="btn btn-primary" href="{% url 'index' %}">Volver a la página principal</a>
+    </div>
+</body>
+</html>
